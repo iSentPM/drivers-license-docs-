@@ -1,0 +1,9 @@
+---
+# Конфигурация модулей ANALYTICS
+product: "analytics"
+modules:
+  # Список модулей продукта
+  # example_module:
+  #   name: "Название модуля"
+  #   description: "Описание модуля"
+  #   features_path: "./features" 

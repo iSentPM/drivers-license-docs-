@@ -1,0 +1,26 @@
+---
+# Конфигурация модулей Логистики (PRD-003)
+product_id: PRD-003
+name: "Логистика"
+modules:
+  drivers_license:
+    module_id: M-301
+    title: "Управление водительскими удостоверениями"
+    description: "Учет и управление водительскими удостоверениями водителей"
+    linked_services:
+      - drivers-license-service
+      - notification-service
+      - api-cloud-service
+    linked_architecture:
+      - ../../technical/architecture/DriversLicense/architecture.yaml
+    features:
+      - F-301  # Управление ВУ (CRUD)
+      - F-302  # Интеграция с API-Cloud
+      - F-303  # Управление лишениями
+      - F-304  # Система уведомлений
+      - F-305  # Настройки проверок и уведомлений
+  # Список модулей продукта
+  # example_module:
+  #   name: "Название модуля"
+  #   description: "Описание модуля"
+  #   features_path: "./features" 

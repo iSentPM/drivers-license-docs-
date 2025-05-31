@@ -1,0 +1,9 @@
+fastapi==0.110.0
+uvicorn==0.27.1
+python-jwt==4.1.0
+python-dotenv==1.0.1
+cryptography==42.0.5
+rsa==4.9.1
+ecdsa==0.19.1
+pyasn1==0.6.1
+pycryptodome==3.20.0 
