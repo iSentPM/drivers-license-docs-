@@ -1,0 +1,58 @@
+---
+design_id: TD-302-DriversList
+title: "Список водителей"
+description: "Дизайн страницы со списком водителей и их ВУ"
+status: "Approved"
+version: "1.0"
+author: "UX Team"
+components:
+  - name: "Фильтры"
+    fields:
+      - name: "status"
+        type: "multiselect"
+        label: "Статус ВУ"
+        options:
+          - "Активно"
+          - "Истекает"
+          - "Просрочено"
+          - "Лишение"
+      - name: "search"
+        type: "text"
+        label: "Поиск по ФИО/номеру ВУ"
+  
+  - name: "Таблица водителей"
+    columns:
+      - name: "fullName"
+        label: "ФИО"
+        sortable: true
+      - name: "licenseNumber"
+        label: "Номер ВУ"
+        sortable: true
+      - name: "categories"
+        label: "Категории"
+      - name: "expireDate"
+        label: "Срок действия"
+        sortable: true
+      - name: "status"
+        label: "Статус"
+        type: "badge"
+      - name: "actions"
+        label: "Действия"
+        type: "menu"
+
+  - name: "Индикаторы статуса"
+    items:
+      - status: "Активно"
+        color: "green"
+      - status: "Истекает"
+        color: "yellow"
+      - status: "Просрочено"
+        color: "red"
+      - status: "Лишение"
+        color: "black"
+
+mockups:
+  - path: "/designs/drivers-license/list-desktop.fig"
+    type: "Desktop"
+  - path: "/designs/drivers-license/list-mobile.fig"
+    type: "Mobile" 

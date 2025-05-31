@@ -1,0 +1,48 @@
+---
+design_id: TD-301-DriverLicenseForm
+title: "Форма водительского удостоверения"
+description: "Дизайн формы создания и редактирования водительского удостоверения"
+status: "Approved"
+version: "1.0"
+author: "UX Team"
+components:
+  - name: "Основная информация"
+    fields:
+      - name: "number"
+        type: "text"
+        label: "Номер и серия ВУ"
+        validation: "required, numeric"
+      - name: "expireDate"
+        type: "date"
+        label: "Срок действия"
+        validation: "required, future date"
+      - name: "categories"
+        type: "multiselect"
+        label: "Категории ТС"
+        options:
+          - "A"
+          - "B"
+          - "C"
+          - "D"
+          - "E"
+  
+  - name: "Дополнительная информация"
+    fields:
+      - name: "issueDate"
+        type: "date"
+        label: "Дата выдачи"
+      - name: "issuedBy"
+        type: "text"
+        label: "Кем выдано"
+      - name: "experience"
+        type: "number"
+        label: "Стаж с"
+      - name: "birthDate"
+        type: "date"
+        label: "Дата рождения"
+
+mockups:
+  - path: "/designs/drivers-license/form-desktop.fig"
+    type: "Desktop"
+  - path: "/designs/drivers-license/form-mobile.fig"
+    type: "Mobile" 

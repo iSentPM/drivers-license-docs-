@@ -12,11 +12,11 @@ acceptance_criteria:
   - "Визуальная индикация проблем с ВУ (лишения, срок действия)"
   - "Быстрая фильтрация водителей по статусу ВУ"
 linked_services:
-  - drivers-license-service
-  - user-service
+  - ../../../../../technical/services/drivers-license-service.yaml
+  - ../../../../../technical/services/user-service.yaml
 linked_designs:
-  - TD-301-DriverLicenseForm
-  - TD-302-DriversList
+  - ../../../../../technical/designs/TD-301-DriverLicenseForm.yaml
+  - ../../../../../technical/designs/TD-302-DriversList.yaml
 full_description: |
   ### Цель
   Реализовать базовый функционал учета водительских удостоверений с возможностью привязки к пользователям.

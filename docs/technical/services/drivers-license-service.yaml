@@ -1,0 +1,33 @@
+---
+service_id: drivers-license-service
+name: "Сервис управления водительскими удостоверениями"
+description: "Микросервис для работы с водительскими удостоверениями"
+version: "1.0.0"
+owner: "Team Driver"
+api:
+  - type: "REST"
+    base_url: "/api/v1/drivers-license"
+    endpoints:
+      - path: "/create"
+        method: "POST"
+        description: "Создание нового ВУ"
+      - path: "/update/{id}"
+        method: "PUT"
+        description: "Обновление данных ВУ"
+      - path: "/delete/{id}"
+        method: "DELETE"
+        description: "Удаление ВУ"
+      - path: "/get/{id}"
+        method: "GET"
+        description: "Получение информации о ВУ"
+      - path: "/list"
+        method: "GET"
+        description: "Получение списка ВУ"
+
+dependencies:
+  - service: user-service
+    description: "Для получения данных пользователей"
+  - service: notification-service
+    description: "Для отправки уведомлений"
+  - service: api-cloud-service
+    description: "Для проверки данных ВУ" 
