@@ -192,7 +192,6 @@ POST /internal/identity/api/v1/addresses
 sequenceDiagram
     participant Client as Клиент
     participant API as Identity API
-    participant Cache as Redis Cache
     participant Dadata as Dadata API
     participant Multigo as Multigo API
 
@@ -203,66 +202,55 @@ sequenceDiagram
     Note over API: - Проверка UUID requestId<br/>- Валидация координат<br/>- Проверка sourcesByPriority
     
     loop Для каждой координаты
-        API->>Cache: Проверить кэш по координатам
-        alt Данные в кэше
-            Cache-->>API: Кэшированный адрес
-        else Кэш пустой
-            alt sourcesByPriority = [1,2] или не указан
-                par Параллельные запросы с CancellationToken
-                    API->>Dadata: POST geolocate/address
-                    Note over API,Dadata: timeout: DadataTimeoutMs
-                    and
-                    API->>Multigo: GET rgeocoder
-                    Note over API,Multigo: timeout: MultigoTimeoutMs
-                end
-                
-                alt Dadata ответил первым
-                    Dadata-->>API: suggestions[] с деталями
-                    API->>API: ❌ Cancel Multigo запрос
-                    API->>Cache: Сохранить результат Dadata
-                else Multigo ответил первым  
-                    Multigo-->>API: {data, err} без деталей
-                    API->>API: ❌ Cancel Dadata запрос
-                    API->>Cache: Сохранить результат Multigo
-                else Timeout обоих сервисов
-                    Note over API: Превышен CancellationTokenTimeoutMs
-                    API->>API: Формирование error объекта
-                end
-                
-            else sourcesByPriority = [2,1]
-                par Параллельные запросы с приоритетом Multigo
-                    API->>Multigo: GET rgeocoder (приоритет)
-                    and
-                    API->>Dadata: POST geolocate/address
-                end
-                
-                alt Multigo ответил первым
-                    Multigo-->>API: {data, err} без деталей
-                    API->>API: ❌ Cancel Dadata запрос
-                    API->>Cache: Сохранить результат Multigo
-                else Dadata ответил первым
-                    Dadata-->>API: suggestions[] с деталями
-                    API->>API: ❌ Cancel Multigo запрос
-                    API->>Cache: Сохранить результат Dadata
-                end
-                
-            else sourcesByPriority = [1] (только Dadata)
+        alt sourcesByPriority = [1,2] или не указан
+            par Параллельные запросы с CancellationToken
                 API->>Dadata: POST geolocate/address
-                alt Dadata успешно
-                    Dadata-->>API: suggestions[] с деталями
-                    API->>Cache: Сохранить результат
-                else Timeout Dadata
-                    API->>API: Формирование error объекта
-                end
-                
-            else sourcesByPriority = [2] (только Multigo)
+                Note over API,Dadata: timeout: DadataTimeoutMs
+                and
                 API->>Multigo: GET rgeocoder
-                alt Multigo успешно
-                    Multigo-->>API: {data, err} без деталей
-                    API->>Cache: Сохранить результат
-                else Timeout Multigo
-                    API->>API: Формирование error объекта
-                end
+                Note over API,Multigo: timeout: MultigoTimeoutMs
+            end
+            
+            alt Dadata ответил первым
+                Dadata-->>API: suggestions[] с деталями
+                API->>API: ❌ Cancel Multigo запрос
+            else Multigo ответил первым  
+                Multigo-->>API: {data, err} без деталей
+                API->>API: ❌ Cancel Dadata запрос
+            else Timeout обоих сервисов
+                Note over API: Превышен CancellationTokenTimeoutMs
+                API->>API: Формирование error объекта
+            end
+            
+        else sourcesByPriority = [2,1]
+            par Параллельные запросы с приоритетом Multigo
+                API->>Multigo: GET rgeocoder (приоритет)
+                and
+                API->>Dadata: POST geolocate/address
+            end
+            
+            alt Multigo ответил первым
+                Multigo-->>API: {data, err} без деталей
+                API->>API: ❌ Cancel Dadata запрос
+            else Dadata ответил первым
+                Dadata-->>API: suggestions[] с деталями
+                API->>API: ❌ Cancel Multigo запрос
+            end
+            
+        else sourcesByPriority = [1] (только Dadata)
+            API->>Dadata: POST geolocate/address
+            alt Dadata успешно
+                Dadata-->>API: suggestions[] с деталями
+            else Timeout Dadata
+                API->>API: Формирование error объекта
+            end
+            
+        else sourcesByPriority = [2] (только Multigo)
+            API->>Multigo: GET rgeocoder
+            alt Multigo успешно
+                Multigo-->>API: {data, err} без деталей
+            else Timeout Multigo
+                API->>API: Формирование error объекта
             end
         end
     end
