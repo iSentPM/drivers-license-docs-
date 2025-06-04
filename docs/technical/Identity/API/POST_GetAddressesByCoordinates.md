@@ -656,7 +656,8 @@ GET https://api7.multigo.ru/3/service/rgeocoder?key={API_KEY}&lat=55.63242&lng=3
 ### Связанные документы
 
 - [Логика микросервиса Identity](../logic.md)
-- [Продуктовая документация Геокодер](/docs/products/ЛичныйКабинет/modules/Геокодер.md)
+- [Продуктовая документация Геокодер](../../../products/personal-account/modules/geocoding/geocoding.md)
+- [Обратное геокодирование](../../../products/personal-account/modules/geocoding/features/reverse-geocoding.md)
 
 ---
 

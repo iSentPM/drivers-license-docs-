@@ -3,10 +3,10 @@
 products:
   personal-account:
     product_id: PRD-001
-    name: "Личный кабинет"
-    description: "Система личного кабинета пользователя"
-    owner: "Требует уточнения"
-    path: "./personal-account"
+    name: "Personal Account (Личный кабинет)"
+    description: "Система личного кабинета пользователя для управления транспортом и логистикой"
+    owner: "AI Analyst"
+    path: "./personal-account/personal-account.md"
   monitoring:
     product_id: PRD-002
     name: "Мониторинг"

@@ -1,13 +1,13 @@
 ---
 id: FEA-001-001-001
-title: Обратное геокодирование
+title: Reverse Geocoding (Обратное геокодирование)
 description: Функция преобразования GPS координат в читаемые адреса
 date: 2024-12-19
 version: v1.0
 status: draft
 feature_id: FEA-001-001-001
 type: feature
-module_link: ../Геокодер.md
+module_link: ../geocoding.md
 figma_link: https://figma.com/design/geocoding-feature
 acceptance_criteria: |
   - Корректное преобразование координат в адреса с точностью до дома
@@ -18,7 +18,7 @@ acceptance_criteria: |
 author: AI Analyst
 ---
 
-# Обратное геокодирование
+# Reverse Geocoding (Обратное геокодирование)
 
 ## Цель функции
 
@@ -32,7 +32,7 @@ author: AI Analyst
 
 ### Техническая реализация
 
-**Связанная техническая документация**: [POST_GetAddressesByCoordinates API](../../../technical/Identity/API/POST_GetAddressesByCoordinates.md)
+**Связанная техническая документация**: [POST_GetAddressesByCoordinates API](../../../../technical/Identity/API/POST_GetAddressesByCoordinates.md)
 
 Система поддерживает следующие источники данных:
 - **DaData API** - приоритетный источник для российских адресов
@@ -119,6 +119,6 @@ author: AI Analyst
 
 ## Связанные документы
 
-- [Техническая спецификация API](../../../technical/Identity/API/POST_GetAddressesByCoordinates.md)
-- [Модуль Геокодер](../Геокодер.md)
-- [Личный кабинет](../../ЛичныйКабинет.md) 
+- [Техническая спецификация API](../../../../technical/Identity/API/POST_GetAddressesByCoordinates.md)
+- [Модуль Геокодер](../geocoding.md)
+- [Personal Account](../../../personal-account.md) 
