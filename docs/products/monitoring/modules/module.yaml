@@ -1,0 +1,36 @@
+---
+# Конфигурация модулей Мониторинга (PRD-002)
+product_id: PRD-002
+name: "Мониторинг"
+modules:
+  dashboard:
+    module_id: M-101
+    title: "Дашборд мониторинга"
+    description: "Основной дашборд системы мониторинга"
+    linked_services:
+      - monitoring-service
+      - metrics-service
+    linked_architecture:
+      - ../../technical/architecture/Monitoring/architecture.yaml
+    features:
+      - F-101
+      - F-102
+
+  alerts:
+    module_id: M-102
+    title: "Система оповещений"
+    description: "Управление оповещениями и уведомлениями"
+    linked_services:
+      - alert-service
+      - notification-service
+    linked_architecture:
+      - ../../technical/architecture/Alerts/architecture.yaml
+    features:
+      - F-103
+      - F-104
+
+  # Список модулей продукта
+  # example_module:
+  #   name: "Название модуля"
+  #   description: "Описание модуля"
+  #   features_path: "./features" 

@@ -1,0 +1,51 @@
+---
+# Индекс продуктов
+products:
+  personal-account:
+    product_id: PRD-001
+    name: "Личный кабинет"
+    description: "Система личного кабинета пользователя"
+    owner: "Требует уточнения"
+    path: "./personal-account"
+  monitoring:
+    product_id: PRD-002
+    name: "Мониторинг"
+    description: "Система мониторинга"
+    owner: "Требует уточнения"
+    path: "./monitoring"
+  logistics:
+    product_id: PRD-003
+    name: "Логистика"
+    description: "Система логистики"
+    owner: "Требует уточнения"
+    path: "./logistics"
+  payments:
+    product_id: PRD-004
+    name: "Платежи и штрафы"
+    description: "Система управления платежами и штрафами"
+    owner: "Требует уточнения"
+    path: "./payments"
+  maintenance:
+    product_id: PRD-005
+    name: "РиТО"
+    description: "Система ремонта и технического обслуживания"
+    owner: "Требует уточнения"
+    path: "./maintenance"
+  analytics:
+    product_id: PRD-006
+    name: "Аналитические отчеты"
+    description: "Система аналитической отчетности"
+    owner: "Требует уточнения"
+    path: "./analytics"
+  management:
+    product_id: PRD-007
+    name: "Управленческий учет"
+    description: "Система управленческого учета"
+    owner: "Требует уточнения"
+    path: "./management"
+  edo:
+    product_id: PRD-008
+    name: "ЭДО"
+    description: "Система электронного документооборота"
+    owner: "Требует уточнения"
+    path: "./edo" 

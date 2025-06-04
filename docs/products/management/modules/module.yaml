@@ -1,0 +1,9 @@
+---
+# Конфигурация модулей MANAGEMENT
+product: "management"
+modules:
+  # Список модулей продукта
+  # example_module:
+  #   name: "Название модуля"
+  #   description: "Описание модуля"
+  #   features_path: "./features" 

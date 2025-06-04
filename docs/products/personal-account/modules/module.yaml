@@ -1,0 +1,53 @@
+---
+# Конфигурация модулей Личного кабинета (PRD-001)
+product_id: PRD-001
+name: "Личный кабинет"
+modules:
+  auth:
+    module_id: M-001
+    title: "Аутентификация"
+    description: "Модуль аутентификации и авторизации пользователей"
+    linked_services:
+      - auth-service
+      - user-service
+    linked_architecture:
+      - ../../technical/architecture/Auth/architecture.yaml
+    features:
+      - F-001
+      - F-002
+
+  profile:
+    module_id: M-002
+    title: "Профиль пользователя"
+    description: "Управление профилем пользователя"
+    linked_services:
+      - user-service
+      - notification-service
+    linked_architecture:
+      - ../../technical/architecture/Profile/architecture.yaml
+    features:
+      - F-003
+      - F-004
+
+  drivers_license:
+    module_id: M-003
+    title: "Водительские удостоверения"
+    description: "Учет и управление водительскими удостоверениями"
+    linked_services:
+      - drivers-license-service
+      - notification-service
+      - api-cloud-service
+    linked_architecture:
+      - ../../technical/architecture/DriversLicense/architecture.yaml
+    features:
+      - drivers-license-management
+      - drivers-license-api-integration
+      - drivers-license-suspensions
+      - drivers-license-notifications
+      - drivers-license-settings
+
+  # Список модулей продукта
+  # example_module:
+  #   name: "Название модуля"
+  #   description: "Описание модуля"
+  #   features_path: "./features" 

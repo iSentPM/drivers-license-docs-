@@ -1,0 +1,9 @@
+---
+# Конфигурация модулей EDO
+product: "edo"
+modules:
+  # Список модулей продукта
+  # example_module:
+  #   name: "Название модуля"
+  #   description: "Описание модуля"
+  #   features_path: "./features" 
